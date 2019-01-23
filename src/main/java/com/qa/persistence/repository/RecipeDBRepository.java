@@ -18,7 +18,7 @@ import java.util.Collection;
 @Default
 public class RecipeDBRepository implements RecipeRepository {
 
-	@PersistenceContext(unitName="priamry")
+	@PersistenceContext(unitName="primary")
 	private EntityManager manager;
 	
 	@Inject
