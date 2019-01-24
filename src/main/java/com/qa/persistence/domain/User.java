@@ -8,15 +8,15 @@ public class User {
 	@Id
 	private int userId;
 	private String userName;
-	private String password;
+	private String userPassword;
 	
 	public User() {
 		//meant to be empty
 	}
 	
-	public User(String userName, String password) {
+	public User(String userName, String userPassword) {
 		setUserName(userName);
-		setPassword(password);
+		setPassword(userPassword);
 	}
 
 	public String getUserName() {
@@ -27,12 +27,12 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUserPassword() {
+		return userPassword;
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.userPassword = password;
 	}
 	
 }

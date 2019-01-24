@@ -17,4 +17,8 @@ public class UserServiceImpl implements UserService {
 		return repo.removeAccount(id);
 	}
 
+	public String showAllAccounts() {
+		return repo.showAllAccounts();
+	}
+
 }

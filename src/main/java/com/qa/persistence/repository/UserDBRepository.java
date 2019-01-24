@@ -5,12 +5,17 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Recipe;
 import com.qa.persistence.domain.User;
 import com.qa.util.JSONUtil;
 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
+
+import java.util.Collection;
+
 import static javax.transaction.Transactional.TxType.REQUIRED;
 
 @Transactional(SUPPORTS)
@@ -43,5 +48,13 @@ public class UserDBRepository implements UserRepository {
 	private User findUser(int id) {
 		return manager.find(User.class, id);
 	}
+	
+	public String showAllAccounts() {
+		Query query = manager.createQuery("SELECT a FROM User a");
+		@SuppressWarnings("unchecked")
+		Collection<User> users = (Collection<User>) query.getResultList();
+		return util.getJSONForObject(users);
+	}
+
 
 }
