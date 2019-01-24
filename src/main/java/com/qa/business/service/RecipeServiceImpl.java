@@ -14,4 +14,8 @@ public class RecipeServiceImpl implements RecipeService {
 		return repo.getAllRecipes();
 	}
 
+	public String removeRecipeById(int id) {
+		return repo.removeRecipeById(id);
+	}
+
 }

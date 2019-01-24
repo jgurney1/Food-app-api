@@ -11,7 +11,7 @@ import com.qa.persistence.domain.Recipe;
 import com.qa.util.JSONUtil;
 
 import static javax.transaction.Transactional.TxType.SUPPORTS;
-
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import java.util.Collection;
 
 @Transactional(SUPPORTS)
@@ -32,4 +32,19 @@ public class RecipeDBRepository implements RecipeRepository {
 		return util.getJSONForObject(recipes);
 	}
 
+	@Transactional(REQUIRED)
+	public String removeRecipeById(int id) {
+		Recipe toRemove = findRecipe(id);
+		if(toRemove != null) {
+			manager.remove(toRemove);
+			return "{\"message\": \"Recipe removed\"}";
+		}
+		return "{\"message\": \"Recipe not found\"}";
+	}
+
+	
+	@Transactional(REQUIRED)
+	private Recipe findRecipe(int id) {
+		return manager.find(Recipe.class, id);
+	}
 }
