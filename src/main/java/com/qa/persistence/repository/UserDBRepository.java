@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.qa.persistence.domain.Recipe;
 import com.qa.persistence.domain.User;
 import com.qa.util.JSONUtil;
 
