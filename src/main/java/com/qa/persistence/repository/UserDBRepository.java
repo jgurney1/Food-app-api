@@ -39,6 +39,7 @@ public class UserDBRepository implements UserRepository {
 	public String removeAccount(int id) {
 		User toRemove = findUser(id);
 		if(toRemove != null) {
+			manager.remove(toRemove);
 			return "{\"message\": \"Account removed\"}";
 		}
 		return "{\"message\": \"Account not found\"}";
