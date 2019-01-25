@@ -47,4 +47,11 @@ public class RecipeDBRepository implements RecipeRepository {
 	private Recipe findRecipe(int id) {
 		return manager.find(Recipe.class, id);
 	}
+
+	@Transactional(REQUIRED)
+	public String addRecipe(int id, String recipe) {
+		Recipe newRecipe = util.getObjectForJSON(recipe, Recipe.class);
+		manager.persist(newRecipe);
+		return "{\"message\": \"Recipe added\"}";
+	}
 }
