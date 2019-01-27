@@ -57,4 +57,12 @@ public class UserDBRepository implements UserRepository {
 	}
 
 
+	@Transactional(REQUIRED)
+	public String verifyAccount(String account) {
+		User toVerify = util.getObjectForJSON(account, User.class);
+		
+		return null;
+	}
+
+
 }

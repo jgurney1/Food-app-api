@@ -6,25 +6,26 @@ import javax.persistence.*;
 public class User {
 
 	@Id
-	private int userId;
-	private String userName;
+	private String email;
 	private String userPassword;
 	
 	public User() {
 		//meant to be empty
 	}
 	
-	public User(String userName, String userPassword) {
-		setUserName(userName);
+	public User(String email, String userPassword) {
 		setPassword(userPassword);
+		setEmail(email);
 	}
 
-	public String getUserName() {
-		return userName;
+
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUserPassword() {
