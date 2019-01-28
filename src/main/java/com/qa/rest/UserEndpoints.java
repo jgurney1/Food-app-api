@@ -25,8 +25,8 @@ public class UserEndpoints {
 	@Path("/removeAccount/{id}")
 	@DELETE
 	@Produces({"application/json"})
-	public String removeAccount(@PathParam("id") int id) {
-		return service.removeAccount(id);
+	public String removeAccount(@PathParam("id") String email) {
+		return service.removeAccount(email);
 	}
 	
 	@Path("/showAllAccounts")

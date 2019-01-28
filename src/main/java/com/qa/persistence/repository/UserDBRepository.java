@@ -35,8 +35,8 @@ public class UserDBRepository implements UserRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String removeAccount(int id) {
-		User toRemove = findUser(id);
+	public String removeAccount(String email) {
+		User toRemove = findUser(email);
 		if(toRemove != null) {
 			manager.remove(toRemove);
 			return "{\"message\": \"Account removed\"}";
@@ -45,8 +45,8 @@ public class UserDBRepository implements UserRepository {
 	}
 
 	@Transactional(REQUIRED)
-	private User findUser(int id) {
-		return manager.find(User.class, id);
+	private User findUser(String email) {
+		return manager.find(User.class, email);
 	}
 	
 	public String showAllAccounts() {
@@ -60,7 +60,9 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	public String verifyAccount(String account) {
 		User toVerify = util.getObjectForJSON(account, User.class);
-		
+		if (toVerify.equals(findUser(toVerify.getEmail()))) {
+			return "{\"message\": \"Login Successful\"}";
+		}
 		return null;
 	}
 

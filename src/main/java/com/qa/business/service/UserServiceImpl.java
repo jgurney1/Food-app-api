@@ -13,12 +13,17 @@ public class UserServiceImpl implements UserService {
 		return repo.addAccount(account);
 	}
 
-	public String removeAccount(int id) {
-		return repo.removeAccount(id);
+	public String removeAccount(String email) {
+		return repo.removeAccount(email);
 	}
 
 	public String showAllAccounts() {
 		return repo.showAllAccounts();
+	}
+
+	public String verifyAccount(String account) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
