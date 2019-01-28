@@ -7,7 +7,8 @@ public class Recipe {
 
 	@Id
 	private int recipeId;
-	private static int idCounter;
+	
+
 	private String title;
 	private String readyTime;
 	private String servings;
@@ -25,8 +26,9 @@ public class Recipe {
 		setServings(servings);
 	}
 	
-	public Recipe(String title, String readyTime, String servings, String ingredients, String method) {
-		setRecipeId(setUnknownRecipeId());
+	public Recipe( String title, String readyTime, String servings, String ingredients, String method) {
+		
+		setRecipeId(title.length());
 		setTitle(title);
 		setReadyTime(readyTime);
 		setServings(servings);
@@ -41,12 +43,6 @@ public class Recipe {
 	public void setRecipeId(int recipeId) {
 		this.recipeId = recipeId;
 	}
-	
-	public int setUnknownRecipeId() { 
-		setIdCounter(getIdCounter() + 1);
-		return getIdCounter();
-	}
-	
 
 	public String getTitle() {
 		return title;
@@ -86,14 +82,6 @@ public class Recipe {
 
 	public void setMethod(String method) {
 		this.method = method;
-	}
-
-	public static int getIdCounter() {
-		return idCounter;
-	}
-
-	public static void setIdCounter(int idCounter) {
-		Recipe.idCounter = idCounter;
 	}
 	
 	
