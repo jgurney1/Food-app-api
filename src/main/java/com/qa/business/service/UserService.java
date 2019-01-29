@@ -6,5 +6,6 @@ public interface UserService {
 	String removeAccount(String email);
 	String showAllAccounts();
 	String verifyAccount(String account);
+	String updateAccount(String account);
 	
 }

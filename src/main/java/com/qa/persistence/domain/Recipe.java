@@ -26,9 +26,9 @@ public class Recipe {
 		setServings(servings);
 	}
 	
-	public Recipe( String title, String readyTime, String servings, String ingredients, String method) {
+	public Recipe(int recipeId, String title, String readyTime, String servings, String ingredients, String method) {
 		
-		setRecipeId(title.length());
+		setRecipeId(recipeId);
 		setTitle(title);
 		setReadyTime(readyTime);
 		setServings(servings);

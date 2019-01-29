@@ -22,8 +22,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public String verifyAccount(String account) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.verifyAccount(account);
+	}
+
+	public String updateAccount(String account) {
+		return repo.updateAccount(account);
 	}
 
 }

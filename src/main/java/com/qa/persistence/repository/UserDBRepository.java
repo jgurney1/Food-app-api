@@ -30,6 +30,9 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	public String addAccount(String account) {
 		User newAccount = util.getObjectForJSON(account, User.class);
+		if(findUser(newAccount.getEmail()) != null) {
+			return "{\"message\": \"Email already taken\"}"; 
+		}
 		manager.persist(newAccount);
 		return "{\"message\": \"Account added\"}";
 	}
@@ -60,11 +63,24 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	public String verifyAccount(String account) {
 		User toVerify = util.getObjectForJSON(account, User.class);
-		if (toVerify.equals(findUser(toVerify.getEmail()))) {
+		User match = findUser(toVerify.getEmail());
+		if (toVerify.getUserPassword().equals(match.getUserPassword())) {
 			return "{\"message\": \"Login Successful\"}";
 		}
-		return null;
+		return "{\"message\": \"Incorrect password or email\"}";
 	}
 
+	@SuppressWarnings("unused")
+	@Transactional(REQUIRED)
+	public String updateAccount(String account) {
+		User toUpdate = util.getObjectForJSON(account, User.class);
+		User toremove = findUser(toUpdate.getEmail());
+		if(toUpdate != null) {
+			manager.remove(toremove);
+			manager.persist(toUpdate);
+			return "{\"message\": \"Password Updated\"}";
+		}
+			return "{\"message\": \"Account not found\"}";
+	}
 
 }
