@@ -14,6 +14,7 @@ public class Recipe {
 	private String servings;
 	private String ingredients;
 	private String method;
+	private String user;
 	
 	public Recipe() {
 		//meant to be empty
@@ -82,6 +83,14 @@ public class Recipe {
 
 	public void setMethod(String method) {
 		this.method = method;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 	
 	

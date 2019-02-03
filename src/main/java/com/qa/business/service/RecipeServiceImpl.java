@@ -18,8 +18,8 @@ public class RecipeServiceImpl implements RecipeService {
 		return repo.removeRecipeById(id);
 	}
 
-	public String addRecipe(int id, String recipe) {
-		return repo.addRecipe(id, recipe);
+	public String addRecipe(String email, String recipe) {
+		return repo.addRecipe(email, recipe);
 	}
 
 }

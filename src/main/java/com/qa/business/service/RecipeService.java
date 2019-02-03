@@ -4,5 +4,5 @@ public interface RecipeService {
 	
 	String getAllRecipes();
 	String removeRecipeById(int id);
-	String addRecipe(int id, String recipe);
+	String addRecipe(String email, String recipe);
 }

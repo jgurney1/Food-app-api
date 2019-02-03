@@ -32,8 +32,8 @@ public class RecipeEndpoints {
 	@Path("/addrecipe/{id}")
 	@POST
 	@Produces({"application/json"})
-	public String addRecipe(@PathParam("id") int id, String recipe) {
-		return service.addRecipe(id,recipe);
+	public String addRecipe(@PathParam("id") String user, String recipe) {
+		return service.addRecipe(user,recipe);
 	}
 	
 }

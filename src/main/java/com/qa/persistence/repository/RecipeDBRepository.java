@@ -49,9 +49,15 @@ public class RecipeDBRepository implements RecipeRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String addRecipe(int id, String recipe) {
-		Recipe newRecipe = util.getObjectForJSON(recipe, Recipe.class);
-		manager.persist(newRecipe);
-		return "{\"message\": \"Recipe added\"}";
+	public String addRecipe(String email, String recipe) {
+		try {
+			Recipe newRecipe = util.getObjectForJSON(recipe, Recipe.class);
+			newRecipe.setUser(email);
+			manager.persist(newRecipe);
+			return "{\"message\": \"Recipe added as "+ email + "\"}"; 
+		}
+		catch (Exception e) {
+			return "{\"message\": \"Failed to add recipe check fileds and try again\"}"; 
+		}
 	}
 }
