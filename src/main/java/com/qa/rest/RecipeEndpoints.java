@@ -36,4 +36,11 @@ public class RecipeEndpoints {
 		return service.addRecipe(user,recipe);
 	}
 	
-}
+	@Path("/getMyRecipes/{id}")
+	@GET
+	@Produces({"application/json"})
+	public String getRecipesByUser(@PathParam("id") String email) {
+		return service.getRecipesByUser(email);
+	}
+	
+}	
