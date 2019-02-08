@@ -62,7 +62,6 @@ public class UserDBRepository implements UserRepository {
 	public String verifyAccount(String account) {
 		try {
 			User toVerify = util.getObjectForJSON(account, User.class);
-
 			User match = findUser(toVerify.getEmail());
 			if (toVerify.getUserPassword().equals(match.getUserPassword())) {
 				return "{\"message\": \"Login Successful\"}";
@@ -76,18 +75,24 @@ public class UserDBRepository implements UserRepository {
 	@SuppressWarnings("unused")
 	@Transactional(REQUIRED)
 	public String updateAccount(String account) {
-		try {
 			User toUpdate = util.getObjectForJSON(account, User.class);
 			User toremove = findUser(toUpdate.getEmail());
-			if (toUpdate != null) {
+			if (toUpdate != null && toremove != null) {
 				manager.remove(toremove);
 				manager.persist(toUpdate);
 				return "{\"message\": \"Password Updated\"}";
 			}
 			return "{\"message\": \"Account not found\"}";
-		} catch (Exception e) {
-			return "{\"message\": \"Account not found\"}";
-		}
 	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+
+
 
 }
