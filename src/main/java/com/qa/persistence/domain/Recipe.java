@@ -53,16 +53,8 @@ public class Recipe {
 		this.title = title;
 	}
 
-	public String getReadyTime() {
-		return readyTime;
-	}
-
 	public void setReadyTime(String readyTime) {
 		this.readyTime = readyTime;
-	}
-
-	public String getServings() {
-		return servings;
 	}
 
 	public void setServings(String servings) {
@@ -92,6 +84,4 @@ public class Recipe {
 	public void setUser(String user) {
 		this.user = user;
 	}
-	
-	
 }

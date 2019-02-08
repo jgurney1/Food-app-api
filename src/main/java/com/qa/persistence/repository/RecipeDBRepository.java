@@ -32,14 +32,13 @@ public class RecipeDBRepository implements RecipeRepository {
 	}
 
 	public String getRecipesByUser(String email) {
-		try {
 			Query query = manager.createQuery("SELECT a FROM Recipe a WHERE a.user LIKE '" + email + "'");
 			@SuppressWarnings("unchecked")
 			Collection<Recipe> myRecipes = (Collection<Recipe>) query.getResultList();
+			if(!myRecipes.isEmpty()) {
 			return util.getJSONForObject(myRecipes);
-		} catch (Exception e) {
+			}
 			return "{\"message\": \"No recipes by that user found\"}";
-		}
 	}
 
 	@Transactional(REQUIRED)
@@ -68,4 +67,13 @@ public class RecipeDBRepository implements RecipeRepository {
 			return "{\"message\": \"Failed to add recipe check fields or saved recipes and try again\"}";
 		}
 	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.util = util;
+	}
+	
 }
