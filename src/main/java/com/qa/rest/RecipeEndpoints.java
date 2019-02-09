@@ -43,4 +43,8 @@ public class RecipeEndpoints {
 		return service.getRecipesByUser(email);
 	}
 	
+	public void setService(RecipeService service) {
+		this.service = service;
+	}
+	
 }	

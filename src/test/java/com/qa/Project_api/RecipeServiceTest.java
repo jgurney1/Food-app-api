@@ -18,7 +18,10 @@ public class RecipeServiceTest {
 		service = new RecipeServiceImpl();
 	}
 	
-	//write test for add recipe
+	@Test
+	public void testAddUsers() {
+		Assert.assertEquals("Did not catch", "{\"message\": \"Error saving recipe check inputs and try again\"}",  service.addRecipe("email",PROFBAD));
+	}
 	
 	@Test
 	public void testCheckProfanity() {
