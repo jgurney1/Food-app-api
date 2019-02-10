@@ -72,7 +72,6 @@ public class UserDBRepository implements UserRepository {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	@Transactional(REQUIRED)
 	public String updateAccount(String account) {
 			User toUpdate = util.getObjectForJSON(account, User.class);
