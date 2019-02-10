@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.qa.business.service.RecipeService;
 import com.qa.business.service.UserService;
 
 @Path("/user")
@@ -49,5 +50,9 @@ public class UserEndpoints {
 	@Produces({"application/json"})
 	public String updateAccount(String account) {
 		return service.updateAccount(account);
+	}
+	
+	public void setService(UserService service) {
+		this.service = service;
 	}
 }

@@ -11,7 +11,9 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.business.service.RecipeService;
+import com.qa.business.service.UserService;
 import com.qa.rest.RecipeEndpoints;
+import com.qa.rest.UserEndpoints;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserEndpointsTest {
@@ -21,10 +23,10 @@ public class UserEndpointsTest {
 	private static final String MOCKVALUE2 = "test_value_string_2";
 
 	@InjectMocks
-	private RecipeEndpoints endpoint;
+	private UserEndpoints endpoint;
 	
 	@Mock
-	private RecipeService service;
+	private UserService service;
 	
 	@Before
 	public void setup() {
@@ -33,27 +35,22 @@ public class UserEndpointsTest {
 	
 	@Test
 	public void testGetAllRecipes() {
-		Mockito.when(service.getAllRecipes()).thenReturn(MOCKVALUE);
-		assertEquals("Did not fetch",MOCKVALUE, endpoint.getAllRecipes());
+		Mockito.when(service.showAllAccounts()).thenReturn(MOCKVALUE);
+		assertEquals("Did not fetch",MOCKVALUE, endpoint.showAllAccounts());
 	}
 	
 	@Test
 	public void testCreateRecipe() {
-		Mockito.when(service.addRecipe(MOCKVALUE2, MOCKVALUE2)).thenReturn(MOCKVALUE);
-		assertEquals("didnt create", MOCKVALUE, endpoint.addRecipe(MOCKVALUE2, MOCKVALUE2));
-		Mockito.verify(service).addRecipe(MOCKVALUE2, MOCKVALUE2);
+		Mockito.when(service.addAccount(MOCKVALUE2)).thenReturn(MOCKVALUE);
+		assertEquals("didnt create", MOCKVALUE, endpoint.addAcount(MOCKVALUE2));
+		Mockito.verify(service).addAccount(MOCKVALUE2);
 	}
 	
 	@Test
 	public void testDeleteRecipeById() {
-		Mockito.when(service.removeRecipeById(1)).thenReturn(MOCKVALUE);
-		assertEquals("didnt remove" , MOCKVALUE, endpoint.removeAccountById(1));
-		Mockito.verify(service).removeRecipeById(1);
+		Mockito.when(service.removeAccount(MOCKVALUE)).thenReturn(MOCKVALUE);
+		assertEquals("didnt remove" , MOCKVALUE, endpoint.removeAccount(MOCKVALUE));
+		Mockito.verify(service).removeAccount(MOCKVALUE);
 	}
 	
-	@Test
-	public void testGetMyRecipes() {
-		Mockito.when(service.getRecipesByUser(MOCKVALUE2)).thenReturn(MOCKVALUE);
-		assertEquals("didnt find",MOCKVALUE , endpoint.getRecipesByUser(MOCKVALUE2));
-	}
 }
